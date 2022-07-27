@@ -7,7 +7,7 @@ import './scss/app.scss';
 import pizzas from './assets/pizzas.json';
 
 function App() {
-  let pizzasArray = pizzas.map((obj) => <PizzaBlock {...obj} />);
+  let pizzasArray = pizzas.map((obj) => <PizzaBlock key={obj.id} {...obj} />);
 
   return (
     <div className="wrapper">

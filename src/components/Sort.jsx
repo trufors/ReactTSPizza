@@ -1,6 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export const Sort = () => {
+  const [open, setOpen] = useState(false);
+  const [sort, setSort] = useState('популярности');
+  const sortArr = ['популярности', 'цене', 'алфавиту'];
+
+  const [activeSort, setActiveSort] = useState(0);
+  const onFocusSort = () => {
+    setActiveSort(1);
+  };
+
   return (
     <div className="sort">
       <div className="sort__label">
@@ -16,15 +25,26 @@ export const Sort = () => {
           />
         </svg>
         <b>Сортировка по:</b>
-        <span>популярности</span>
+        <span onClick={() => setOpen(!open)}>{sort}</span>
       </div>
-      <div className="sort__popup">
-        <ul>
-          <li className="active">популярности</li>
-          <li>цене</li>
-          <li>алфавиту</li>
-        </ul>
-      </div>
+      {open && (
+        <div className="sort__popup">
+          <ul>
+            {sortArr.map((cat, i) => (
+              <li
+                key={i}
+                onFocus={() => onFocusSort}
+                onClick={() => {
+                  setSort(cat);
+                  setOpen(false);
+                }}
+                className={cat === sort ? 'active' : ''}>
+                {cat}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };
