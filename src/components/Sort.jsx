@@ -5,11 +5,6 @@ export const Sort = () => {
   const [sort, setSort] = useState('популярности');
   const sortArr = ['популярности', 'цене', 'алфавиту'];
 
-  const [activeSort, setActiveSort] = useState(0);
-  const onFocusSort = () => {
-    setActiveSort(1);
-  };
-
   return (
     <div className="sort">
       <div className="sort__label">
@@ -33,12 +28,11 @@ export const Sort = () => {
             {sortArr.map((cat, i) => (
               <li
                 key={i}
-                onFocus={() => onFocusSort}
                 onClick={() => {
                   setSort(cat);
                   setOpen(false);
                 }}
-                className={cat === sort ? 'active' : ''}>
+                className={sort === cat ? 'active' : ''}>
                 {cat}
               </li>
             ))}

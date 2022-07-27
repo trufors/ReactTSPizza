@@ -4,10 +4,19 @@ import Header from './components/Header';
 import { PizzaBlock } from './components/PizzaBlock';
 import { Sort } from './components/Sort';
 import './scss/app.scss';
-import pizzas from './assets/pizzas.json';
+
+import * as axios from 'axios';
 
 function App() {
-  let pizzasArray = pizzas.map((obj) => <PizzaBlock key={obj.id} {...obj} />);
+  const [items, setItems] = React.useState([]);
+
+  React.useEffect(() => {
+    axios
+      .get('https://62e14cb7e8ad6b66d846be2f.mockapi.io/items')
+      .then((response) => setItems(response.data));
+  }, []);
+
+  let pizzasArray = items.map((obj) => <PizzaBlock key={obj.id} {...obj} />);
 
   return (
     <div className="wrapper">
