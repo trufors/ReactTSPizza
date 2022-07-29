@@ -1,6 +1,11 @@
 import React from 'react';
+import BasketFull from './BasketFull';
 
 const BasketPage = () => {
-  return <div>BasketPage</div>;
+  return (
+    <>
+      <BasketFull />
+    </>
+  );
 };
 export default BasketPage;
