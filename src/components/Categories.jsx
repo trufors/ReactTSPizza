@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Categories = () => {
+const Categories = () => {
   const [activeIndex, setActiveIndex] = React.useState(0);
   const onClickCategory = (index) => {
     setActiveIndex(index);
@@ -23,3 +23,4 @@ export const Categories = () => {
     </div>
   );
 };
+export default Categories;

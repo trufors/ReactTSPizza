@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export const Sort = () => {
+const Sort = () => {
   const [open, setOpen] = useState(false);
   const [sort, setSort] = useState('популярности');
   const sortArr = ['популярности', 'цене', 'алфавиту'];
@@ -42,3 +42,4 @@ export const Sort = () => {
     </div>
   );
 };
+export default Sort;

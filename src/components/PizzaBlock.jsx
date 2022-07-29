@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export const PizzaBlock = ({ imageUrl, title, price, sizes, types }) => {
+const PizzaBlock = ({ imageUrl, title, price, sizes, types }) => {
   const [activeSize, setActiveSize] = useState(0);
   const onClickSize = (index) => {
     setActiveSize(index);
@@ -56,3 +56,4 @@ export const PizzaBlock = ({ imageUrl, title, price, sizes, types }) => {
     </div>
   );
 };
+export default PizzaBlock;

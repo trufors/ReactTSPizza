@@ -1,35 +1,22 @@
 import React from 'react';
-import { Categories } from './components/Categories';
+import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
-import { PizzaBlock } from './components/PizzaBlock';
-import { Sort } from './components/Sort';
+
+import BasketPage from './pages/BasketPage';
+import HomePage from './pages/HomePage';
+import NotFoundPage from './pages/NotFoundBlock';
 import './scss/app.scss';
 
-import * as axios from 'axios';
-
 function App() {
-  const [items, setItems] = React.useState([]);
-
-  React.useEffect(() => {
-    axios
-      .get('https://62e14cb7e8ad6b66d846be2f.mockapi.io/items')
-      .then((response) => setItems(response.data));
-  }, []);
-
-  let pizzasArray = items.map((obj) => <PizzaBlock key={obj.id} {...obj} />);
-
   return (
     <div className="wrapper">
       <Header />
       <div className="content">
-        <div className="container">
-          <div className="content__top">
-            <Categories />
-            <Sort />
-          </div>
-          <h2 className="content__title">Все пиццы</h2>
-          <div className="content__items">{pizzasArray}</div>
-        </div>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/basket" element={<BasketPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
       </div>
     </div>
   );
