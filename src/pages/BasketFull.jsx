@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import BasketPizzaItem from '../components/BasketPizzaItem';
 
 const BasketFull = () => {
@@ -78,7 +79,9 @@ const BasketFull = () => {
               <span>Очистить корзину</span>
             </div>
           </div>
-          <div className="content__items">
+          <div className="cart__items">
+            <BasketPizzaItem />
+            <BasketPizzaItem />
             <BasketPizzaItem />
           </div>
           <div className="cart__bottom">
@@ -93,7 +96,7 @@ const BasketFull = () => {
               </span>
             </div>
             <div className="cart__bottom-buttons">
-              <a href="/" className="button button--outline button--add go-back-btn">
+              <Link to="/" className="button button--outline button--add go-back-btn">
                 <svg
                   width="8"
                   height="14"
@@ -110,7 +113,7 @@ const BasketFull = () => {
                 </svg>
 
                 <span>Вернуться назад</span>
-              </a>
+              </Link>
               <div className="button pay-btn">
                 <span>Оплатить сейчас</span>
               </div>
