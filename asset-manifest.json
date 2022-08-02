@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/ReactTSPizza/static/css/main.7ef80ae0.css",
+    "main.js": "/ReactTSPizza/static/js/main.00f076ab.js",
+    "static/js/787.f0b93d58.chunk.js": "/ReactTSPizza/static/js/787.f0b93d58.chunk.js",
+    "static/media/empty-cart.png": "/ReactTSPizza/static/media/empty-cart.db905d1f4b063162f25b.png",
+    "static/media/pizza-logo.svg": "/ReactTSPizza/static/media/pizza-logo.56ac87032d8f6fdf863326acd06c0d97.svg",
+    "index.html": "/ReactTSPizza/index.html",
+    "main.7ef80ae0.css.map": "/ReactTSPizza/static/css/main.7ef80ae0.css.map",
+    "main.00f076ab.js.map": "/ReactTSPizza/static/js/main.00f076ab.js.map",
+    "787.f0b93d58.chunk.js.map": "/ReactTSPizza/static/js/787.f0b93d58.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7ef80ae0.css",
+    "static/js/main.00f076ab.js"
+  ]
+}
