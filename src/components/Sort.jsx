@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-
-const Sort = () => {
+import { useDispatch } from 'react-redux';
+import { setSortList } from '../redux/reducers/filterSlice';
+const Sort = ({ listName, sortArr }) => {
   const [open, setOpen] = useState(false);
-  const [sort, setSort] = useState('популярности');
-  const sortArr = ['популярности', 'цене', 'алфавиту'];
+  const dispatch = useDispatch();
 
   return (
     <div className="sort">
@@ -20,7 +20,7 @@ const Sort = () => {
           />
         </svg>
         <b>Сортировка по:</b>
-        <span onClick={() => setOpen(!open)}>{sort}</span>
+        <span onClick={() => setOpen(!open)}>{listName}</span>
       </div>
       {open && (
         <div className="sort__popup">
@@ -29,11 +29,11 @@ const Sort = () => {
               <li
                 key={i}
                 onClick={() => {
-                  setSort(cat);
+                  dispatch(setSortList(cat));
                   setOpen(false);
                 }}
-                className={sort === cat ? 'active' : ''}>
-                {cat}
+                className={listName === cat.name ? 'active' : ''}>
+                {cat.name}
               </li>
             ))}
           </ul>

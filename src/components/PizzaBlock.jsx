@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addItemBacket } from '../redux/reducers/backetSlice';
 
-const PizzaBlock = ({ imageUrl, title, price, sizes, types }) => {
+const PizzaBlock = ({ id, imageUrl, title, price, sizes, types }) => {
+  const dispatch = useDispatch();
   const [activeSize, setActiveSize] = useState(0);
   const onClickSize = (index) => {
     setActiveSize(index);
@@ -12,13 +15,22 @@ const PizzaBlock = ({ imageUrl, title, price, sizes, types }) => {
   ));
 
   const [countPizza, setCountPizza] = useState(0);
-  const statusChanged = () => {
-    setCountPizza((prev) => prev + 1);
-  };
 
   const [activeType, setActiveType] = useState(0);
   const onClickType = (index) => {
     setActiveType(index);
+  };
+  const onClickAddPizza = () => {
+    let item = {
+      id,
+      imageUrl,
+      title,
+      price,
+      size: activeSize,
+      type: activeType,
+    };
+    dispatch(addItemBacket(item));
+    setCountPizza((prev) => prev + 1);
   };
 
   const arrTypes = types.map((type, i) => (
@@ -37,7 +49,7 @@ const PizzaBlock = ({ imageUrl, title, price, sizes, types }) => {
       </div>
       <div className="pizza-block__bottom">
         <div className="pizza-block__price">от {price} ₽</div>
-        <button onClick={statusChanged} className="button button--outline button--add">
+        <button onClick={onClickAddPizza} className="button button--outline button--add">
           <svg
             width="12"
             height="12"

@@ -1,8 +1,18 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import BasketPizzaItem from '../components/BasketPizzaItem';
+import { clearAllBacket } from '../redux/reducers/backetSlice';
 
-const BasketFull = () => {
+const BasketFull = ({ item }) => {
+  const totalCount = useSelector((state) => state.backetReducer.totalCount);
+  const totalPrice = useSelector((state) => state.backetReducer.totalPrice);
+  const dispatch = useDispatch();
+  const clearCart = () => {
+    if (window.confirm('Are you sure you want to clearAllBacket?')) {
+      dispatch(clearAllBacket());
+    }
+  };
   return (
     <div className="content">
       <div className="container container--cart">
@@ -39,7 +49,7 @@ const BasketFull = () => {
               </svg>
               Корзина
             </h2>
-            <div className="cart__clear">
+            <div onClick={clearCart} className="cart__clear">
               <svg
                 width="20"
                 height="20"
@@ -80,19 +90,19 @@ const BasketFull = () => {
             </div>
           </div>
           <div className="cart__items">
-            <BasketPizzaItem />
-            <BasketPizzaItem />
-            <BasketPizzaItem />
+            {item.map((cart, i) => (
+              <BasketPizzaItem {...cart} key={i} />
+            ))}
           </div>
           <div className="cart__bottom">
             <div className="cart__bottom-details">
               <span>
                 {' '}
-                Всего пицц: <b>3 шт.</b>{' '}
+                Всего пицц: <b>{totalCount} шт.</b>{' '}
               </span>
               <span>
                 {' '}
-                Сумма заказа: <b>900 ₽</b>{' '}
+                Сумма заказа: <b>{totalPrice} ₽</b>{' '}
               </span>
             </div>
             <div className="cart__bottom-buttons">
